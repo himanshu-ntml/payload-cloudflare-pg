@@ -6,3 +6,6 @@ const nextConfig = {
 }
 
 export default withPayload(nextConfig, { devBundleServerPackages: false })
+
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare'
+initOpenNextCloudflareForDev()
