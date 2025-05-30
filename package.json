@@ -16,7 +16,9 @@
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
+    "cf-typegen": "npx wrangler types --env-interface CloudflareEnv",
+    "db:migrate-generate": "npx payload migrate:create",
+    "db:migrate-apply": "npx payload migrate"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.1.0",
@@ -30,8 +32,7 @@
     "next": "15.3.0",
     "payload": "3.40.0",
     "react": "19.1.0",
-    "react-dom": "19.1.0",
-    "sharp": "0.32.6"
+    "react-dom": "19.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
@@ -41,15 +42,14 @@
     "eslint": "^9.16.0",
     "eslint-config-next": "15.3.0",
     "prettier": "^3.4.2",
-    "typescript": "5.7.3"
+    "typescript": "5.7.3",
+    "wrangler": "4.18.0"
   },
   "engines": {
     "node": "^18.20.2 || >=20.9.0",
     "pnpm": "^9 || ^10"
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "sharp"
-    ]
+  "overrides": {
+    "pg": "^8.15.6"
   }
 }

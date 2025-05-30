@@ -4,34 +4,30 @@
   "name": "pg",
   "compatibility_date": "2025-05-05",
   "compatibility_flags": [
-    // Enable Node.js API
-    // see https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag
     "nodejs_compat",
-    "nodejs_compat_populate_process_env",
+    "nodejs_compat_populate_process_env"
   ],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS",
+    "binding": "ASSETS"
   },
   "services": [
     {
       "binding": "WORKER_SELF_REFERENCE",
-      // The service should match the "name" of your worker
-      "service": "my-app",
-    },
+      "service": "my-app"
+    }
   ],
   "r2_buckets": [
-    // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
-    // {
-    //   "binding": "NEXT_INC_CACHE_R2_BUCKET",
-    //   "bucket_name": "<BUCKET_NAME>",
-    // },
+    {
+      "binding": "NEXT_INC_CACHE_R2_BUCKET",
+      "bucket_name": "inc-cache"
+    }
   ],
   "hyperdrive": [
     {
       "binding": "HYPERDRIVE",
       "id": "fb4fdb3ffca84e8a8f2ac7ebfcd80454",
-      "localConnectionString": "postgres://postgres:password@localhost:5432/payload-cloudflare",
-    },
-  ],
+      "localConnectionString": "postgres://postgres:password@localhost:5432/pg"
+    }
+  ]
 }

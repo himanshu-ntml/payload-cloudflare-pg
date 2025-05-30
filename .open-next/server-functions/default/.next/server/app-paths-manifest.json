@@ -1,9 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(payload)/api/graphql/route": "app/(payload)/api/graphql/route.js",
-  "/(payload)/api/graphql-playground/route": "app/(payload)/api/graphql-playground/route.js",
-  "/my-route/route": "app/my-route/route.js",
-  "/(payload)/api/[...slug]/route": "app/(payload)/api/[...slug]/route.js",
-  "/(payload)/admin/[[...segments]]/page": "app/(payload)/admin/[[...segments]]/page.js",
-  "/(frontend)/page": "app/(frontend)/page.js"
-}

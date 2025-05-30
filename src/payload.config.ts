@@ -5,17 +5,25 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
-import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
 
+import { getCloudflareContext } from '@opennextjs/cloudflare'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-console.log(process.env.HYPERDRIVE, '>')
-
 export default buildConfig({
+  telemetry: false,
+  db: postgresAdapter({
+    pool: {
+      connectionString: (await getCloudflareContext({ async: true })).env.HYPERDRIVE
+        .connectionString,
+      maxUses: 1,
+    },
+    push: false,
+  }),
   admin: {
     user: Users.slug,
     importMap: {
@@ -28,12 +36,6 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.HYPERDRIVE || '',
-    },
-  }),
-  sharp,
   plugins: [
     payloadCloudPlugin(),
     // storage-adapter-placeholder
